@@ -1,0 +1,966 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version     : Vivado v.2019.2 (lin64) Build 2708876 Wed Nov  6 21:39:14 MST 2019
+| Date             : Mon Aug  2 10:25:58 2021
+| Host             : cad106.naist.jp running 64-bit CentOS Linux release 7.9.2009 (Core)
+| Command          : report_power -hierarchical_depth 10 -file /home/hoailuan/MSA_Project/MSA_on_FPGA/PEA_Size_Power/4x4_PEA_MSA_Power.rpt
+| Design           : SoC_MSA_4x4PEA_wrapper
+| Device           : xcu280-fsvh2892-2L-e
+| Design State     : synthesized
+| Grade            : extended
+| Process          : typical
+| Characterization : Production
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+Power Report
+
+Table of Contents
+-----------------
+1. Summary
+1.1 On-Chip Components
+1.2 Power Supply Summary
+1.3 Confidence Level
+2. Settings
+2.1 Environment
+2.2 Clock Constraints
+3. Detailed Reports
+3.1 By Hierarchy
+
+1. Summary
+----------
+
++--------------------------+--------------+
+| Total On-Chip Power (W)  | 12.496       |
+|   FPGA Power (W)         | 12.245       |
+|   HBM Power (W)          | 0.250        |
+| Design Power Budget (W)  | Unspecified* |
+| Power Budget Margin (W)  | NA           |
+| Dynamic (W)              | 9.084        |
+| Device Static (W)        | 3.411        |
+| Effective TJA (C/W)      | 0.4          |
+| Max Ambient (C)          | 94.5         |
+| Junction Temperature (C) | 30.5         |
+| Confidence Level         | Medium       |
+| Setting File             | ---          |
+| Simulation Activity File | ---          |
+| Design Nets Matched      | NA           |
++--------------------------+--------------+
+* Specify Design Power Budget using, set_operating_conditions -design_power_budget <value in Watts>
+
+
+1.1 On-Chip Components
+----------------------
+
++--------------------------+-----------+----------+-----------+-----------------+
+| On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
++--------------------------+-----------+----------+-----------+-----------------+
+| Clocks                   |     1.530 |      112 |       --- |             --- |
+| CLB Logic                |     0.678 |   371735 |       --- |             --- |
+|   LUT as Logic           |     0.419 |   134651 |   1303680 |           10.33 |
+|   LUT as Distributed RAM |     0.137 |     6013 |    600960 |            1.00 |
+|   Register               |     0.068 |   185652 |   2607360 |            7.12 |
+|   LUT as Shift Register  |     0.037 |     2067 |    600960 |            0.34 |
+|   CARRY8                 |     0.016 |     2985 |    162960 |            1.83 |
+|   Others                 |     0.000 |     3486 |       --- |             --- |
+|   F7/F8 Muxes            |     0.000 |     1440 |   1303680 |            0.11 |
+| Signals                  |     0.673 |   319302 |       --- |             --- |
+| Block RAM                |     0.847 |      124 |      2016 |            6.15 |
+| I/O                      |     0.006 |        1 |       624 |            0.16 |
+| GTY                      |     4.812 |       16 |        24 |           66.67 |
+| Hard IPs                 |     0.538 |        1 |       --- |             --- |
+|   PCIE                   |     0.538 |        1 |       --- |             --- |
+| Static Power             |     3.411 |          |           |                 |
+| Total                    |    12.496 |          |           |                 |
++--------------------------+-----------+----------+-----------+-----------------+
+
+
+1.2 Power Supply Summary
+------------------------
+
++------------+-------------+-----------+-------------+------------+
+| Source     | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
++------------+-------------+-----------+-------------+------------+
+| Vccint     |       0.850 |     7.116 |       5.632 |      1.484 |
+| Vccint_io  |       0.850 |     0.257 |       0.001 |      0.256 |
+| Vccbram    |       0.850 |     0.122 |       0.086 |      0.036 |
+| Vccaux     |       1.800 |     0.813 |       0.000 |      0.813 |
+| Vccaux_io  |       1.800 |     0.038 |       0.003 |      0.035 |
+| Vcco33     |       3.300 |     0.000 |       0.000 |      0.000 |
+| Vcco25     |       2.500 |     0.000 |       0.000 |      0.000 |
+| Vcco18     |       1.800 |     0.000 |       0.000 |      0.000 |
+| Vcco15     |       1.500 |     0.000 |       0.000 |      0.000 |
+| Vcco135    |       1.350 |     0.000 |       0.000 |      0.000 |
+| Vcco12     |       1.200 |     0.000 |       0.000 |      0.000 |
+| Vcco10     |       1.000 |     0.000 |       0.000 |      0.000 |
+| Vccadc     |       1.800 |     0.024 |       0.000 |      0.024 |
+| VCC_IO_HBM |       1.200 |     0.084 |       0.000 |      0.084 |
+| VCC_HBM    |       1.200 |     0.082 |       0.000 |      0.082 |
+| VCCAUX_HBM |       2.500 |     0.022 |       0.000 |      0.022 |
+| MGTYAVcc   |       0.900 |     0.877 |       0.826 |      0.051 |
+| MGTYAVtt   |       1.200 |     2.779 |       2.755 |      0.024 |
+| MGTYVccaux |       1.800 |     0.096 |       0.093 |      0.003 |
++------------+-------------+-----------+-------------+------------+
+
+
+1.3 Confidence Level
+--------------------
+
++-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| User Input Data             | Confidence | Details                                               | Action                                                                                                     |
++-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+| Design implementation state | Low        | Design is synthesized                                 | Accuracy of the tool is not optimal until design is fully placed and routed                                |
+| Clock nodes activity        | High       | User specified more than 95% of clocks                |                                                                                                            |
+| I/O nodes activity          | Medium     | More than 5% of inputs are missing user specification | Provide missing input activity with simulation results or by editing the "By Resource Type -> I/Os" view   |
+| Internal nodes activity     | Medium     | User specified less than 25% of internal nodes        | Provide missing internal nodes activity with simulation results or by editing the "By Resource Type" views |
+| Device models               | High       | Device models are Production                          |                                                                                                            |
+|                             |            |                                                       |                                                                                                            |
+| Overall confidence level    | Medium     |                                                       |                                                                                                            |
++-----------------------------+------------+-------------------------------------------------------+------------------------------------------------------------------------------------------------------------+
+
+
+2. Settings
+-----------
+
+2.1 Environment
+---------------
+
++-----------------------+--------------------------+
+| Ambient Temp (C)      | 25.0                     |
+| ThetaJA (C/W)         | 0.4                      |
+| Airflow (LFM)         | 250                      |
+| Heat Sink             | medium (Medium Profile)  |
+| ThetaSA (C/W)         | 0.5                      |
+| Board Selection       | medium (10"x10")         |
+| # of Board Layers     | 12to15 (12 to 15 Layers) |
+| Board Temperature (C) | 25.0                     |
++-----------------------+--------------------------+
+
+
+2.2 Clock Constraints
+---------------------
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| Clock                                                                                                                                                                                                                                                                                                                                                                                                                                              | Domain                                                                                                                                                                                                                                                                                                                                                                                                                              | Constraint (ns) |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[0]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[1]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[2]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[3]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[0]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[1]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[2]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[3]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[0]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[1]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[2]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[3]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[0]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[1]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[2]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtye4_channel_gen.gen_gtye4_channel_inst[0].GTYE4_CHANNEL_PRIM_INST/TXOUTCLK                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclk_out[3]                                                                |             2.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[0].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[10].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[10].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[11].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[11].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[12].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[12].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[13].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[13].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[14].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[14].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[15].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[15].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[1].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[1].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[2].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[2].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[3].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[3].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[4].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[4].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[5].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[5].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[6].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[6].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[7].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[7].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[8].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[8].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[9].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/bufg_gt_txoutclkmon_inst/O  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_cpll_cal_gtye4.gen_cpll_cal_inst[9].gen_inst_cpll_cal.gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_inst/gtwizard_ultrascale_v1_7_7_gtye4_cpll_cal_tx_i/txoutclkmon  |             8.0 |
+| SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/phy_clk_i/bufg_gt_intclk/O                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/phy_clk_i/CLK_INTCLK                                                                                                                                                                                                                                                                                                                         |          1000.0 |
+| diablo_gt.diablo_gt_phy_wrapper/pclk2_gt                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/phy_clk_i/CLK_PCLK2_GT                                                                                                                                                                                                                                                                                                                       |             4.0 |
+| gtrefclkmonitor_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                             | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[0]                                                         |            10.0 |
+| gtrefclkmonitor_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[0]                                                         |            10.0 |
+| gtrefclkmonitor_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[0]                                                         |            10.0 |
+| gtrefclkmonitor_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[0]                                                         |            10.0 |
+| gtrefclkmonitor_out[1]                                                                                                                                                                                                                                                                                                                                                                                                                             | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[1]                                                         |            10.0 |
+| gtrefclkmonitor_out[1]_1                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[1]                                                         |            10.0 |
+| gtrefclkmonitor_out[1]_2                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[1]                                                         |            10.0 |
+| gtrefclkmonitor_out[1]_3                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[1]                                                         |            10.0 |
+| gtrefclkmonitor_out[2]                                                                                                                                                                                                                                                                                                                                                                                                                             | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[2]                                                         |            10.0 |
+| gtrefclkmonitor_out[2]_1                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[2]                                                         |            10.0 |
+| gtrefclkmonitor_out[2]_2                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[2]                                                         |            10.0 |
+| gtrefclkmonitor_out[2]_3                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[2]                                                         |            10.0 |
+| gtrefclkmonitor_out[3]                                                                                                                                                                                                                                                                                                                                                                                                                             | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[3]                                                         |            10.0 |
+| gtrefclkmonitor_out[3]_1                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[3]                                                         |            10.0 |
+| gtrefclkmonitor_out[3]_2                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[3]                                                         |            10.0 |
+| gtrefclkmonitor_out[3]_3                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/gtrefclkmonitor_out[3]                                                         |            10.0 |
+| mcap_clk                                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/phy_clk_i/CLK_MCAPCLK                                                                                                                                                                                                                                                                                                                        |             8.0 |
+| pcie_refclk_clk_p                                                                                                                                                                                                                                                                                                                                                                                                                                  | pcie_refclk_clk_p                                                                                                                                                                                                                                                                                                                                                                                                                   |            10.0 |
+| qpll0outclk_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[24].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outclk_out[0]                                                      |             0.2 |
+| qpll0outclk_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[25].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outclk_out[0]                                                      |             0.2 |
+| qpll0outclk_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[26].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outclk_out[0]                                                      |             0.2 |
+| qpll0outclk_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[27].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outclk_out[0]                                                      |             0.2 |
+| qpll0outrefclk_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                              | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[24].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outrefclk_out[0]                                                   |            10.0 |
+| qpll0outrefclk_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                            | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[25].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outrefclk_out[0]                                                   |            10.0 |
+| qpll0outrefclk_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                            | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[26].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outrefclk_out[0]                                                   |            10.0 |
+| qpll0outrefclk_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                            | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[27].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll0outrefclk_out[0]                                                   |            10.0 |
+| qpll1outclk_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[24].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outclk_out[0]                                                      |             0.2 |
+| qpll1outclk_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[25].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outclk_out[0]                                                      |             0.2 |
+| qpll1outclk_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[26].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outclk_out[0]                                                      |             0.2 |
+| qpll1outclk_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[27].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outclk_out[0]                                                      |             0.2 |
+| qpll1outrefclk_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                              | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[24].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outrefclk_out[0]                                                   |            10.0 |
+| qpll1outrefclk_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                            | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[25].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outrefclk_out[0]                                                   |            10.0 |
+| qpll1outrefclk_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                            | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[26].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outrefclk_out[0]                                                   |            10.0 |
+| qpll1outrefclk_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                            | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[27].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/qpll1outrefclk_out[0]                                                   |            10.0 |
+| refclkoutmonitor0_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[24].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor0_out[0]                                                |            10.0 |
+| refclkoutmonitor0_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                         | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[25].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor0_out[0]                                                |            10.0 |
+| refclkoutmonitor0_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                         | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[26].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor0_out[0]                                                |            10.0 |
+| refclkoutmonitor0_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                         | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[27].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor0_out[0]                                                |            10.0 |
+| refclkoutmonitor1_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                           | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[24].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor1_out[0]                                                |            10.0 |
+| refclkoutmonitor1_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                         | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[25].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor1_out[0]                                                |            10.0 |
+| refclkoutmonitor1_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                         | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[26].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor1_out[0]                                                |            10.0 |
+| refclkoutmonitor1_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                         | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_common.gen_common_container[27].gen_enabled_common.gtye4_common_wrapper_inst/common_inst/refclkoutmonitor1_out[0]                                                |            10.0 |
+| rxoutclk_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                                    | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[0]                                                                |             4.0 |
+| rxoutclk_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[0]                                                                |             4.0 |
+| rxoutclk_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[0]                                                                |             4.0 |
+| rxoutclk_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[0]                                                                |             4.0 |
+| rxoutclk_out[1]                                                                                                                                                                                                                                                                                                                                                                                                                                    | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[1]                                                                |             4.0 |
+| rxoutclk_out[1]_1                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[1]                                                                |             4.0 |
+| rxoutclk_out[1]_2                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[1]                                                                |             4.0 |
+| rxoutclk_out[1]_3                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[1]                                                                |             4.0 |
+| rxoutclk_out[2]                                                                                                                                                                                                                                                                                                                                                                                                                                    | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[2]                                                                |             4.0 |
+| rxoutclk_out[2]_1                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[2]                                                                |             4.0 |
+| rxoutclk_out[2]_2                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[2]                                                                |             4.0 |
+| rxoutclk_out[2]_3                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[2]                                                                |             4.0 |
+| rxoutclk_out[3]                                                                                                                                                                                                                                                                                                                                                                                                                                    | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[3]                                                                |             4.0 |
+| rxoutclk_out[3]_1                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[3]                                                                |             4.0 |
+| rxoutclk_out[3]_2                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[3]                                                                |             4.0 |
+| rxoutclk_out[3]_3                                                                                                                                                                                                                                                                                                                                                                                                                                  | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclk_out[3]                                                                |             4.0 |
+| rxoutclkpcs_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[0]                                                             |             4.0 |
+| rxoutclkpcs_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[0]                                                             |             4.0 |
+| rxoutclkpcs_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[0]                                                             |             4.0 |
+| rxoutclkpcs_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[0]                                                             |             4.0 |
+| rxoutclkpcs_out[1]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[1]                                                             |             4.0 |
+| rxoutclkpcs_out[1]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[1]                                                             |             4.0 |
+| rxoutclkpcs_out[1]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[1]                                                             |             4.0 |
+| rxoutclkpcs_out[1]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[1]                                                             |             4.0 |
+| rxoutclkpcs_out[2]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[2]                                                             |             4.0 |
+| rxoutclkpcs_out[2]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[2]                                                             |             4.0 |
+| rxoutclkpcs_out[2]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[2]                                                             |             4.0 |
+| rxoutclkpcs_out[2]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[2]                                                             |             4.0 |
+| rxoutclkpcs_out[3]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[3]                                                             |             4.0 |
+| rxoutclkpcs_out[3]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[3]                                                             |             4.0 |
+| rxoutclkpcs_out[3]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[3]                                                             |             4.0 |
+| rxoutclkpcs_out[3]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/rxoutclkpcs_out[3]                                                             |             4.0 |
+| txoutclkpcs_out[0]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[0]                                                             |             4.0 |
+| txoutclkpcs_out[0]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[0]                                                             |             4.0 |
+| txoutclkpcs_out[0]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[0]                                                             |             4.0 |
+| txoutclkpcs_out[0]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[0]                                                             |             4.0 |
+| txoutclkpcs_out[1]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[1]                                                             |             4.0 |
+| txoutclkpcs_out[1]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[1]                                                             |             4.0 |
+| txoutclkpcs_out[1]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[1]                                                             |             4.0 |
+| txoutclkpcs_out[1]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[1]                                                             |             4.0 |
+| txoutclkpcs_out[2]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[2]                                                             |             4.0 |
+| txoutclkpcs_out[2]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[2]                                                             |             4.0 |
+| txoutclkpcs_out[2]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[2]                                                             |             4.0 |
+| txoutclkpcs_out[2]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[2]                                                             |             4.0 |
+| txoutclkpcs_out[3]                                                                                                                                                                                                                                                                                                                                                                                                                                 | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[24].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[3]                                                             |             4.0 |
+| txoutclkpcs_out[3]_1                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[25].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[3]                                                             |             4.0 |
+| txoutclkpcs_out[3]_2                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[26].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[3]                                                             |             4.0 |
+| txoutclkpcs_out[3]_3                                                                                                                                                                                                                                                                                                                                                                                                                               | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/gt_wizard.gtwizard_top_i/SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i/inst/gen_gtwizard_gtye4_top.SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_gtwizard_gtye4_inst/gen_gtwizard_gtye4.gen_channel_container[27].gen_enabled_channel.gtye4_channel_wrapper_inst/channel_inst/txoutclkpcs_out[3]                                                             |             4.0 |
+| xdma_0_axi_aclk                                                                                                                                                                                                                                                                                                                                                                                                                                    | SoC_MSA_4x4PEA_i/xdma_0/inst/pcie4c_ip_i/inst/gt_top_i/diablo_gt.diablo_gt_phy_wrapper/phy_clk_i/CLK_USERCLK                                                                                                                                                                                                                                                                                                                        |             4.0 |
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+
+
+3. Detailed Reports
+-------------------
+
+3.1 By Hierarchy
+----------------
+
++----------------------------------------------------------+-----------+
+| Name                                                     | Power (W) |
++----------------------------------------------------------+-----------+
+| SoC_MSA_4x4PEA_wrapper                                   |     9.084 |
+|   SoC_MSA_4x4PEA_i                                       |     9.084 |
+|     MSA_4x4PEA_0                                         |     1.594 |
+|       inst                                               |     1.594 |
+|         MSA_4x4PEA_v1_0_S00_AXI_inst                     |     1.594 |
+|           Multimode_SHA2_Accelerator                     |     1.583 |
+|             AXI_Interface                                |     0.086 |
+|             Processing_Element[0].PE                     |     0.086 |
+|               Dual_ALU                                   |     0.075 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.016 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[10].PE                    |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[11].PE                    |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[12].PE                    |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[13].PE                    |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[14].PE                    |     0.088 |
+|               Dual_ALU                                   |     0.077 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[15].PE                    |     0.087 |
+|               Dual_ALU                                   |     0.077 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[1].PE                     |     0.086 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.016 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[2].PE                     |     0.086 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.016 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[3].PE                     |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.016 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[4].PE                     |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[5].PE                     |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[6].PE                     |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[7].PE                     |     0.088 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[8].PE                     |     0.087 |
+|               Dual_ALU                                   |     0.076 |
+|                 stage1                                   |     0.025 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.013 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.009 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|             Processing_Element[9].PE                     |     0.191 |
+|               Dual_ALU                                   |     0.181 |
+|                 stage1                                   |     0.129 |
+|                   stage1_HB                              |     0.012 |
+|                   stage1_LB                              |     0.117 |
+|                 stage2                                   |     0.019 |
+|                   Stage2_HB                              |     0.010 |
+|                   Stage2_LB                              |     0.009 |
+|                 stage3                                   |     0.032 |
+|                   Stage3_HB                              |     0.017 |
+|                   Stage3_LB                              |     0.016 |
+|               FAD                                        |     0.006 |
+|     axi_smc                                              |     0.154 |
+|       inst                                               |     0.154 |
+|         s00_entry_pipeline                               |     0.001 |
+|         s00_nodes                                        |     0.152 |
+|           s00_ar_node                                    |     0.017 |
+|             inst                                         |     0.017 |
+|               inst_mi_handler                            |     0.017 |
+|                 gen_normal_area.inst_fifo_node_payld     |     0.016 |
+|                   gen_xpm_memory_fifo.inst_fifo          |     0.016 |
+|           s00_aw_node                                    |     0.017 |
+|             inst                                         |     0.017 |
+|               inst_mi_handler                            |     0.017 |
+|                 gen_normal_area.inst_fifo_node_payld     |     0.017 |
+|                   gen_xpm_memory_fifo.inst_fifo          |     0.017 |
+|           s00_b_node                                     |     0.003 |
+|             inst                                         |     0.003 |
+|               inst_mi_handler                            |     0.003 |
+|                 gen_normal_area.inst_fifo_node_payld     |     0.003 |
+|                   gen_xpm_memory_fifo.inst_fifo          |     0.003 |
+|           s00_r_node                                     |     0.054 |
+|             inst                                         |     0.054 |
+|               inst_mi_handler                            |     0.054 |
+|                 gen_normal_area.inst_fifo_node_payld     |     0.054 |
+|                   gen_xpm_memory_fifo.inst_fifo          |     0.054 |
+|           s00_w_node                                     |     0.062 |
+|             inst                                         |     0.062 |
+|               inst_mi_handler                            |     0.062 |
+|                 gen_normal_area.inst_fifo_node_payld     |     0.062 |
+|                   gen_xpm_memory_fifo.inst_fifo          |     0.062 |
+|     util_ds_buf                                          |     0.006 |
+|       U0                                                 |     0.006 |
+|     xdma_0                                               |     7.331 |
+|       inst                                               |     7.331 |
+|         pcie4c_ip_i                                      |     6.216 |
+|           inst                                           |     6.216 |
+|             gt_top_i                                     |     4.914 |
+|               diablo_gt.diablo_gt_phy_wrapper            |     4.891 |
+|                 gt_wizard.gtwizard_top_i                 |     4.845 |
+|                   SoC_MSA_4x4PEA_xdma_0_0_pcie4c_ip_gt_i |     4.844 |
+|                 phy_lane[0].phy_txeq_i                   |     0.002 |
+|                 phy_lane[10].phy_txeq_i                  |     0.002 |
+|                 phy_lane[11].phy_txeq_i                  |     0.002 |
+|                 phy_lane[12].phy_txeq_i                  |     0.002 |
+|                 phy_lane[13].phy_txeq_i                  |     0.002 |
+|                 phy_lane[14].phy_txeq_i                  |     0.002 |
+|                 phy_lane[15].phy_txeq_i                  |     0.002 |
+|                 phy_lane[1].phy_txeq_i                   |     0.002 |
+|                 phy_lane[2].phy_txeq_i                   |     0.002 |
+|                 phy_lane[3].phy_txeq_i                   |     0.002 |
+|                 phy_lane[4].phy_txeq_i                   |     0.002 |
+|                 phy_lane[5].phy_txeq_i                   |     0.002 |
+|                 phy_lane[6].phy_txeq_i                   |     0.002 |
+|                 phy_lane[7].phy_txeq_i                   |     0.002 |
+|                 phy_lane[8].phy_txeq_i                   |     0.002 |
+|                 phy_lane[9].phy_txeq_i                   |     0.002 |
+|                 phy_rst_i                                |     0.001 |
+|               phy_pipeline                               |     0.023 |
+|             pcie_4_0_pipe_inst                           |     1.301 |
+|               pcie4_0_512b_intfc_mod                     |     0.306 |
+|                 pcie_4_0_512b_intfc_int_mod              |     0.306 |
+|                   pcie_4_0_512b_cc_intfc_mod             |     0.057 |
+|                   pcie_4_0_512b_cq_intfc_mod             |     0.096 |
+|                   pcie_4_0_512b_rc_intfc_mod             |     0.085 |
+|                   pcie_4_0_512b_rq_intfc_mod             |     0.067 |
+|               pcie_4_0_bram_inst                         |     0.354 |
+|                 RAM32K.bram_comp_inst                    |     0.189 |
+|                   bram_16k_0_int                         |     0.083 |
+|                   bram_16k_1_int                         |     0.083 |
+|                 bram_post_inst                           |     0.096 |
+|                   bram_16k_int                           |     0.083 |
+|                 bram_repl_inst                           |     0.068 |
+|                   bram_rep_int_0                         |     0.057 |
+|               pcie_4_0_init_ctrl_inst                    |     0.031 |
+|               pcie_4_0_vf_decode_inst                    |     0.063 |
+|                 pcie_4_0_vf_decode_inst                  |     0.063 |
+|         ram_top                                          |     0.505 |
+|           C2H_PCIE_DSC_CPLD_RAM                          |     0.071 |
+|           MASTER_READ_BRAM                               |     0.045 |
+|             genblk1[0].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[1].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[2].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[3].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[4].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[5].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[6].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[7].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|           MASTER_WRITE_FIFO                              |     0.044 |
+|             genblk1[0].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[1].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[2].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[3].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[4].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[5].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[6].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|             genblk1[7].u_buffermem                       |     0.006 |
+|               U0                                         |     0.006 |
+|                 inst_blk_mem_gen                         |     0.006 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.006 |
+|           gen_c2h_bram.C2H_DAT0_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_c2h_bram.C2H_DAT1_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_c2h_bram.C2H_DAT2_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_c2h_bram.C2H_DAT3_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_h2c_bram.H2C_DAT0_FIFO                     |     0.044 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_h2c_bram.H2C_DAT1_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_h2c_bram.H2C_DAT2_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|           gen_h2c_bram.H2C_DAT3_FIFO                     |     0.043 |
+|             genblk1[0].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[1].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[2].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[3].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[4].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[5].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[6].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|             genblk1[7].u_buffermem                       |     0.005 |
+|               U0                                         |     0.005 |
+|                 inst_blk_mem_gen                         |     0.005 |
+|                   gnbram.gnativebmg.native_blk_mem_gen   |     0.005 |
+|         udma_wrapper                                     |     0.609 |
+|           dma_top                                        |     0.608 |
+|             axi4mm_bridge_top_inst                       |     0.048 |
+|               axi4mm_axi_mm_master_top_inst              |     0.047 |
+|                 axi4mm_axi_mm_master_rd                  |     0.012 |
+|                 axi4mm_axi_mm_master_wr_inst             |     0.006 |
+|                 axi4mm_axi_str_masterbr_rdtlp_inst       |     0.016 |
+|                 axi4mm_axi_str_masterbridge_wrrd_inst    |     0.013 |
+|             base                                         |     0.017 |
+|               CFG_INST                                   |     0.004 |
+|               IRQ_INST                                   |     0.009 |
+|                 msix_req.pf0_msix_table                  |     0.006 |
+|               TAR_BRDG                                   |     0.001 |
+|               cq_axilt_slv                               |     0.001 |
+|               usr_axilt_slv                              |     0.001 |
+|             dma_enable.aximm.dma_aximm                   |     0.068 |
+|               axi4mm_axi_mm_master_rd                    |     0.014 |
+|               axi4mm_axi_mm_master_wr                    |     0.049 |
+|                 WPL_FIFO                                 |     0.001 |
+|                 WTLP_DAT_FIFO                            |     0.012 |
+|               axidma_rrq_arb                             |     0.002 |
+|                 Fifowhead.fifoInfo                       |     0.002 |
+|               axidma_wrq_arb                             |     0.003 |
+|                 Fifowhead.fifoInfo                       |     0.003 |
+|             dma_enable.vul_dma                           |     0.279 |
+|               RD                                         |     0.115 |
+|                 gen_rdwr_loop[0].gen_rdwr_eng.RDWR_INST  |     0.027 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.003 |
+|                   WRQ_FIFO                               |     0.002 |
+|                 gen_rdwr_loop[1].gen_rdwr_eng.RDWR_INST  |     0.026 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.002 |
+|                 gen_rdwr_loop[2].gen_rdwr_eng.RDWR_INST  |     0.026 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.002 |
+|                 gen_rdwr_loop[3].gen_rdwr_eng.RDWR_INST  |     0.037 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.002 |
+|               WR                                         |     0.107 |
+|                 gen_rdwr_loop[0].gen_rdwr_eng.RDWR_INST  |     0.026 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.003 |
+|                 gen_rdwr_loop[1].gen_rdwr_eng.RDWR_INST  |     0.024 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.002 |
+|                 gen_rdwr_loop[2].gen_rdwr_eng.RDWR_INST  |     0.024 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.002 |
+|                 gen_rdwr_loop[3].gen_rdwr_eng.RDWR_INST  |     0.033 |
+|                   DSC_FIFO                               |     0.003 |
+|                   RRQ_FIFO                               |     0.002 |
+|                   WRQ_FIFO                               |     0.002 |
+|               dsc_eng.DSC                                |     0.055 |
+|                 RRQ_FIFO                                 |     0.002 |
+|             dma_enable.wb_eng.dma_pcie_wb_eng            |     0.004 |
+|               axidma_wb_arb                              |     0.003 |
+|                 Fifowhead.fifoInfo                       |     0.002 |
+|             dma_pcie_req                                 |     0.191 |
+|               axidma_rrq_arb                             |     0.003 |
+|                 Fifowhead.fifoInfo                       |     0.003 |
+|               axidma_wrq_arb                             |     0.004 |
+|                 Fifowhead.fifoInfo                       |     0.003 |
+|               dma_pcie_rc                                |     0.114 |
+|                 u_dma_rc_mem_pfch                        |     0.017 |
+|                 u_mem_rc                                 |     0.049 |
+|               dma_pcie_rq                                |     0.069 |
+|                 RQ_FIFO                                  |     0.015 |
+|                 WTLP_DAT_FIFO                            |     0.010 |
+|                 WTLP_HDR_FIFO                            |     0.001 |
++----------------------------------------------------------+-----------+
+
+
